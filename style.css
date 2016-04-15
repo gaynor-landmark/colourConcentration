@@ -5,85 +5,19 @@ main{
   padding: 10px;
 }
 
-.row1{
-  
+.row{
   border-style: solid;
   border-color: blue;
   border-width: 3px;
   margin: 30px;
-  height: 50px;
+  height: 53px;
 }
 
-.row2{
-  
-  border-style: solid;
-  border-color: blue;
-  border-width: 3px;
-  margin: 30px;
-  height: 50px;
-}
-
-.row3{
-  
-  border-style: solid;
-  border-color: blue;
-  border-width: 3px;
-  margin: 30px;
-  height: 50px;
-}
-
-.row4{
-  
-  border-style: solid;
-  border-color: blue;
-  border-width: 3px;
-  margin: 10px;
-  height: 50px;
-}
-
-.row5{
- 
-  border-style: solid;
-  border-color: blue;
-  border-width: 3px;
-  margin: 30px;
-  height: 50px;
-}
-
-.col1{
- 
+.col{
   border-style: solid;
   border-width: 3px;
   margin: 30px;
-  width: 50px;
-}
-.col2{
-  
-  border-style: solid;
-  border-width: 3px;
-  margin: 30px;
-  width: 50px;
-}
-.col3{
-  
-  border-style: solid;
-  border-width: 3px;
-  margin: 30px;
-  width: 50px;
-}
-.col4{
-  
-  border-style: solid;
-  border-width: 3px;
-  margin: 10px;
-  width: 50px;
-}
-.col5{
-  
-  border-style: solid;
-  border-width: 3px;
-  margin: 10px;
-  width: 50px;
+  width: 60px;
 }
 
 
@@ -114,7 +48,7 @@ main{
 }
 .newColourr2c2{
   display: show;
-  background-color: Coral; 
+  background-color: Coral;
 }
 .newColourr2c3{
   display: show;
@@ -212,5 +146,5 @@ main{
 
 
 .hidden{
-  display.none;
-} 
+  display: none;
+}
