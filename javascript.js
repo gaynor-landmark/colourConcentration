@@ -1,66 +1,75 @@
 
-var pair = "";
-var BlockID = "";
+var firstBlockID = "";
+var secondBlockID = "";
 var timeoutID;
 var matchesNr = 0;
 var missesNr = 0;
 
 $(document).ready( function(){
   $(document).on("click", "#board td", function(e){
-    blockID = $(this).attr('id');
-    showBlock();
+    var blockID = $(this).attr('id');
+    if (canRespond(blockID))
+    {
+      showBlock(blockID);
+    }
+
    })
   }
 )
 
-function showBlock(){
+function canRespond (blockID) {
   var block = $("#" + blockID)
   if (block.hasClass("matched")) {
-    // don't respond to the  click
-  } else {
-    block.toggleClass("newColour" + blockID );
-    if  (pair === "") {
-      pair = blockID;
+    return false  // don't respond to the  click
+  }
+  if (firstBlockID == "" || secondBlockID == "") {
+    return true
+  }
+  return false
+}
 
-    }
-    else {
+function showBlock(blockID){
+    if  (firstBlockID === "") {
+      firstBlockID = blockID;
+      var firstblock = $("#" + firstBlockID)
+      firstblock.toggleClass("newColour" + blockID);
+    } else {
+      secondBlockID = blockID
+      var secondblock = $("#" + secondBlockID)
+      var firstblock = $("#" + firstBlockID)
       console.log(matchesNr, missesNr);
-      if (pair === blockID) {
+      if (firstBlockID === secondBlockID) {
         // clicking the same block again, so just toggle, don't check
-        block.toggleClass("newColour" + blockID);
+        firstblock.toggleClass("newColour" + blockID);
       } else {
-        if (checkMatch(blockID, pair)){
-          block.addClass("matched")
-          var blockPr = $("#" + pair)
-          blockPr.addClass('matched')
+        secondblock.toggleClass("newColour" + blockID);
+        if (checkMatch(firstBlockID, secondBlockID)){
+          firstblock.addClass("matched")
+          secondblock.addClass('matched')
           matchesNr++;
           var msg1 = document.getElementById("message1");
           msg1.textContent = "Matches " + matchesNr;
-          pair = "";
-          blockID = "";
+          firstBlockID = "";
+          secondBlockID = "";
         } else {
           missesNr++;
           var msg2 = document.getElementById("message2");
           msg2.textContent = "Misses " + missesNr;
-          var x = setTimeout(unset,2000);
+          var x = setTimeout(unset(firstBlockID, secondBlockID),2000);
         };
       }
     }
-  }
+
 }
 
-function unset(){
+function unset(firstBlockID, secondBlockID){
   //unset the miss-matched colours to pick another match
-  if (blockID != ""){
-    var block = $("#" + blockID)
-    block.toggleClass("newColour" + blockID );
-  }
-  if (pair != ""){
-     var block = $("#" + pair)
-     block.toggleClass("newColour" + pair );
-  }
-  blockID = "";
-  pair = "";
+  var secondblock = $("#" + secondBlockID)
+  var firstblock = $("#" + firstBlockID)
+  firstblock.toggleClass("newColour" + firstBlockID );
+  secondblock.toggleClass("newColour" + secondBlockID );
+  firstblock = "";
+  secondblock = "";
   window.clearTimeout(timeoutID);      //clear the timeout
 }
 
