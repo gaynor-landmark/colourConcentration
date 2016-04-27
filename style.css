@@ -5,18 +5,12 @@ main{
   padding: 10px;
 }
 
-.row{
+.block{
   border-style: solid;
   border-color: blue;
   border-width: 3px;
   margin: 30px;
   height: 53px;
-}
-
-.col{
-  border-style: solid;
-  border-width: 3px;
-  margin: 30px;
   width: 60px;
 }
 
@@ -48,7 +42,7 @@ main{
 }
 .newColourr2c2{
   display: show;
-  background-color: Coral;
+  background-color: yellow;
 }
 .newColourr2c3{
   display: show;
@@ -76,7 +70,7 @@ main{
 }
 .newColourr3c4{
   display: show;
-  background-color: Coral;
+  background-color: yellow;
 }
 .newColourr3c5{
   display: show;
